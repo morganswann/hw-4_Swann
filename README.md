@@ -40,7 +40,7 @@ This is the part that prose alone cannot do reliably — the randomness, the quo
 ## Limitations
 
 - **Manual library updates** — adding new songs requires editing the CSV by hand, which can get tedious as your library grows
-- **Case-sensitive mood labels** — `Heartbreak` and `heartbreak` are treated as different moods, so the user has to be consistent when tagging songs and writing quotas
+- **Shuffle Abilities** — the skill will not shuffle two or more moods without your prompt
 - **No mood inference** — the skill cannot guess a song's mood from its title or artist; every song must be manually tagged by the user
 
 
