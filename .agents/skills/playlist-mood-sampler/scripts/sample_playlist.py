@@ -11,6 +11,7 @@ def main():
     parser.add_argument("--csv", required=True, help="Path to CSV file with columns: title, artist, mood")
     parser.add_argument("--quota", required=True, help='JSON string mapping mood labels to counts, e.g. \'{"heartbreak": 2}\'')
     parser.add_argument("--seed", type=int, help="Random seed for reproducible results")
+    parser.add_argument("--shuffle", action="store_true", help="Shuffle songs across moods instead of grouping by mood")
     args = parser.parse_args()
 
     try:
@@ -44,6 +45,9 @@ def main():
                 f"Error: mood '{mood}' needs {count} song(s) but only {len(available)} available."
             )
         playlist.extend(random.sample(available, count))
+
+    if args.shuffle:
+        random.shuffle(playlist)
 
     for i, song in enumerate(playlist, 1):
         print(f"{i}. {song['title']} — {song['artist']} [{song['mood']}]")

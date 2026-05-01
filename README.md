@@ -43,4 +43,6 @@ This is the part that prose alone cannot do reliably — the randomness, the quo
 - **Shuffle Abilities** — the skill will not shuffle two or more moods without your prompt
 - **No mood inference** — the skill cannot guess a song's mood from its title or artist; every song must be manually tagged by the user
 
+## Video Walkthrough
 
+[https://youtu.be/a474cfh_IZg](https://youtu.be/a474cfh_IZg)
