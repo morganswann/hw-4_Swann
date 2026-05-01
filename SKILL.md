@@ -1,6 +1,6 @@
 ---
 name: playlist-mood-sampler
-description: Randomly generates a playlist from a personal song library that hits an exact mood quota. Given a CSV of songs tagged with mood labels (e.g. heartbreak, villain era, sunday morning) and a quota like {"heartbreak": 3, "hot girl walk": 2}, the script samples from each mood bucket without replacement and returns a numbered playlist. Use when someone wants a mood-balanced playlist from their own library, or when a DJ or event planner needs a structured setlist with exact song counts per vibe — especially for weddings, parties, or other events where each moment needs a distinct mood.
+description: "Randomly generates a playlist from a personal song library that hits an exact mood quota. Given a CSV of songs tagged with mood labels (e.g. heartbreak, villain era, sunday morning) and a quota like {\"heartbreak\": 3, \"hot girl walk\": 2}, the script samples from each mood bucket without replacement and returns a numbered playlist. Use when someone wants a mood-balanced playlist from their own library, or when a DJ or event planner needs a structured setlist with exact song counts per vibe — especially for weddings, parties, or other events where each moment needs a distinct mood."
 ---
 
 # playlist-mood-sampler
