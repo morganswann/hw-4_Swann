@@ -1,3 +1,8 @@
+---
+name: playlist-mood-sampler
+description: Randomly generates a playlist from a personal song library that hits an exact mood quota. Given a CSV of songs tagged with mood labels (e.g. heartbreak, villain era, sunday morning) and a quota like {"heartbreak": 3, "hot girl walk": 2}, the script samples from each mood bucket without replacement and returns a numbered playlist. Use when someone wants a mood-balanced playlist from their own library, or when a DJ or event planner needs a structured setlist with exact song counts per vibe — especially for weddings, parties, or other events where each moment needs a distinct mood.
+---
+
 # playlist-mood-sampler
 
 ## What this skill does
@@ -43,16 +48,16 @@ Do NOT use this skill to:
 
 ```
 title,artist,mood
-Liability,Lorde,heartbreak
-Die For You,The Weeknd,late night
-MONTERO,Lil Nas X,villain era
-Good as Hell,Lizzo,hot girl walk
-Stronger,Kanye West,rage
-Coffee for Your Head,beabadoobee,sunday morning
-Bohemian Rhapsody,Queen,karaoke
-So High School,Taylor Swift,heartbreak
-Blinding Lights,The Weeknd,late night
-Espresso,Sabrina Carpenter,hot girl walk
+It'll Be Okay,Rachel Grae,heartbreak
+Me,Kelly Clarkson,heartbreak
+Man I Need,Olivia Dean,in love
+WHERE IS MY HUSBAND,RAYE,in love
+For Tonight,GIVEON,late night
+Top Down,3Quency,late night
+NISSAN ALTIMA,Doechii,villain era
+Misery Business,Paramore,karaoke
+Little Girl Gone,CHINCHILLA,rage
+You're Still The One,Teddy Swims,sunday morning
 ```
 
 ### Example quota
@@ -78,17 +83,31 @@ The skill accepts any mood labels the user defines in their CSV. Suggested label
 - `rage` — high energy, cathartic
 - `sunday morning` — slow, cozy, low energy
 
+## Step-by-step instructions
+
+1. **Prepare your song library** — create a CSV file with three columns: `title`, `artist`, `mood`. Tag each song with one of your mood labels. Save it somewhere accessible (e.g. `references/library.csv`).
+2. **Define your quota** — decide how many songs you want from each mood as a JSON object, e.g. `{"heartbreak": 2, "villain era": 2, "sunday morning": 1}`.
+3. **Run the script** — call `sample_playlist.py` with `--csv` pointing to your library and `--quota` as a JSON string.
+4. **Check the output** — the script prints a numbered playlist to stdout. If any mood bucket doesn't have enough songs to fulfill the quota, it raises a clear error telling you which mood needs more songs.
+5. **Optional: use a seed** — pass `--seed <number>` to lock in a specific result and get the same playlist every time you run it.
+
+## Limitations & checks
+
+- The CSV must have exactly these column headers: `title`, `artist`, `mood` (case-sensitive)
+- Mood labels in the quota must exactly match the labels in the CSV (e.g. `"hot girl walk"` ≠ `"Hot Girl Walk"`)
+- The skill will error clearly if a mood bucket has fewer songs than the quota requests — add more songs to that category to fix it
+- Songs are sampled without replacement — no duplicates in a single playlist run
+
 ## Output
 
 A plain-text playlist printed to stdout:
 
 ```
 🎵 Your Playlist:
-1. Liability — Lorde [heartbreak]
-2. So High School — Taylor Swift [heartbreak]
-3. Blinding Lights — The Weeknd [late night]
-4. Coffee for Your Head — beabadoobee [late night]
-5. Espresso — Sabrina Carpenter [hot girl walk]
+1. It'll Be Okay — Rachel Grae [heartbreak]
+2. Man I Need — Olivia Dean [in love]
+3. NISSAN ALTIMA — Doechii [villain era]
+4. You're Still The One — Teddy Swims [sunday morning]
 ```
 
 ## Script
